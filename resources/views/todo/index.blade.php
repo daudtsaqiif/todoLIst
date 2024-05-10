@@ -34,7 +34,12 @@
                             <td>{{ $row->title }}</td>
                             <td>{{ $row->description }}</td>
                             <td>{{ $row->dateline }}</td>
-                            <td>{{ $row->status }}</td>
+                            @if ($row->status == 'Todo')
+                            <td><span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> {{ $row->status }}</span> </td>
+                            @else
+                            <td> <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> {{ $row->status }}</span> </td>
+                            @endif
+                            
                             <td>
                                 @if ($row->status == 'Todo')
                                     <form action="{{ route('todo.update', $row->id) }}" method="post" class="d-inline">
