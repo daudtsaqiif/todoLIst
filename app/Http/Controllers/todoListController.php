@@ -79,9 +79,9 @@ class todoListController extends Controller
         $todo = todoList::findOrFail($id);
 
         if ($todo->status == 'Todo') {
-            $todo->update(['status' => 'in Progres']);
+            $todo->update(['status' => 'In Progress']);
         } else {
-            $todo->update(['status' => 'Todo']);
+            $todo->update(['status' => 'Pandding']);
         return redirect()->back()->with('error', 'To do status has change, DONT GIVE UP!');
 
         } 
