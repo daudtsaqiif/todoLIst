@@ -13,6 +13,14 @@
                         <label for="todoTitle" class="form-label">Title</label>
                         <input type="text" class="form-control" id="todoTitle" name="title" value="{{ old('title') }}">
                     </div>
+                    <div class="col-12">
+                        <label for="todoDescription" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="todoDescription" name="description">
+                    </div>
+                    <div class="col-12">
+                        <label for="todoDateline" class="form-label">Dateline</label>
+                        <input type="date" class="form-control" id="todoDateline" name="dateline">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

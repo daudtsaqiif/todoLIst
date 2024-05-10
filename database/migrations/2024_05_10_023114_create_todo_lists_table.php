@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
-            $table->string('deskription');
-            $table->string('deadline');
+            $table->string('description');
+            $table->date('dateline');
             $table->string('status')->default('Todo');
             $table->timestamps();
         });

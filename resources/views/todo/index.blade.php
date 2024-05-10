@@ -16,12 +16,13 @@
 
             @include('todo.modal-create')
 
-
             <table class="table">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>title</th>
+                        <th>Description</th>
+                        <th>Deadline</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -31,6 +32,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $row->title }}</td>
+                            <td>{{ $row->description }}</td>
+                            <td>{{ $row->dateline }}</td>
                             <td>{{ $row->status }}</td>
                             <td>
                                 @if ($row->status == 'Todo')
@@ -75,7 +78,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center"> Data is Empty</td>
+                            <td colspan="5" class="text-center"> Data is Empty</td>
                         </tr>
                     @endforelse
                 </tbody>

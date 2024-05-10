@@ -34,7 +34,9 @@ class todoListController extends Controller
     {
         //
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
+            'description' => 'required',
+            'dateline' => 'required'
         ]);
 
         try {
