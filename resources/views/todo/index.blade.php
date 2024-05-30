@@ -49,8 +49,8 @@
                                 <form action="{{ route('todo.update', $row->id) }}" method="post">
                                     @csrf
                                     @method('PUT')
-                                    <div class="modal-body">
-                                        <div class="col-sm-10">
+                                    <div class="d-flex">
+                                        <div class="col-sm-8">
                                             <select class="form-select" aria-label="Default select example" name="status">
                                                 <option selected>Select Status</option>
                                                 <option value="TODO">TODO</option>
@@ -58,10 +58,9 @@
                                                 <option value="Pandding">Pandding</option>
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mt-1">Save changes</button>
+                                        <button type="submit" class="btn btn-primary"><i class="bi bi-person-check-fill"></i></button>
                                     </div>
                                 </form>
-                                
                                 <form action="{{ route('todo.destroy', $row->id) }}" method="post">
                                 @csrf
                                 @method('delete')
