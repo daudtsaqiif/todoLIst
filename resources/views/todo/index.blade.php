@@ -34,47 +34,39 @@
                             <td>{{ $row->title }}</td>
                             <td>{{ $row->description }}</td>
                             <td>{{ $row->dateline }}</td>
-                            @if ($row->status == 'Todo')
-                            <td><span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> {{ $row->status }}</span> </td>
-                            @elseif ($row->status == 'Pandding')
-                            <td><span class="badge bg-danger text-dark"><i class="bi bi-exclamation-triangle me-1"></i> {{ $row->status }}</span> </td>
-                            @else
-                            <td> <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> {{ $row->status }}</span> </td>
-                            @endif
-                            
                             <td>
-                                @if ($row->status == 'Todo' || 'In Progress')
-                                <form action="{{ route('todo.update', $row->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('PUT')
-                                        <button class="btn btn-warning">
-                                            Do Now
-                                        </button>
-                                </form>
+                                @if ($row->status == 'TODO')
+                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> TODO</span>
                                 @elseif ($row->status == 'In Progress')
-                                <form action="{{ route('todo.update', $row->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('PUT')
-                                        <button class="btn btn-warning">
-                                            Do later
-                                        </button>
-                                        <form action="{{ route('todo.destroy', $row->id) }}" method="post" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-success" type="submit">
-                                                <i class="bi bi-check2-all"></i>
-                                            </button>
-                                        </form>
-                                </form>
+                                    <span class="badge bg-info text-dark"><i class="bi bi-exclamation-triangle me-1"></i> In Progress</span>
+                                @elseif ($row->status == 'Pandding')
+                                    <span class="badge bg-danger"><i class="bi bi-info-circle me-1"></i> Pandding</span>
                                 @else
-                                <form action="{{ route('todo.update', $row->id) }}" method="post" class="d-inline">
+                                    <span class="badge bg-success">Success</span>
+                                @endif
+                            </td>
+                            <td>
+                                <form action="{{ route('todo.update', $row->id) }}" method="post">
                                     @csrf
                                     @method('PUT')
-                                        <button class="btn btn-warning">
-                                            Do Now
-                                        </button>
+                                    <div class="modal-body">
+                                        <div class="col-sm-10">
+                                            <select class="form-select" aria-label="Default select example" name="status">
+                                                <option selected>Select Status</option>
+                                                <option value="TODO">TODO</option>
+                                                <option value="In Progress">In Progress</option>
+                                                <option value="Pandding">Pandding</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-1">Save changes</button>
+                                    </div>
                                 </form>
-                                @endif
+                                
+                                <form action="{{ route('todo.destroy', $row->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger mt-3"><i class="bi bi-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @empty

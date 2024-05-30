@@ -78,14 +78,16 @@ class todoListController extends Controller
         //
         $todo = todoList::findOrFail($id);
 
-        if ($todo->status == 'Todo') {
-            $todo->update(['status' => 'In Progress']);
-        } else {
-            $todo->update(['status' => 'Pandding']);
-        return redirect()->back()->with('error', 'To do status has change, DONT GIVE UP!');
-
-        } 
-        return redirect()->back()->with('success', 'To do status has change, KEEP SPIRIT!!');
+        try {
+            //code...
+            $todo->update([
+                'status' => $request->status
+            ]);
+            return redirect()->back()->with('success', 'To do status has change, KEEP SPIRIT!!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return redirect()->back()->with('error', 'To do status has change, DONT GIVE UP!');
+        }
     }
 
     /**
