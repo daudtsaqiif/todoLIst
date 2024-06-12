@@ -1,25 +1,35 @@
 <aside id="sidebar" class="sidebar">
+    <ul class="">
+        @if (Route::has('login'))
+            @auth
+                <ul class="sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ url('/todo')}}">
+                            <i class="bi bi-grid"></i>
+                            Dashboard
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+                </ul>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="btn btn-danger w-100 " type="submit">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Sign Out
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-success w-100 ">
+                    Log in
+                </a>
 
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-        <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-            </a>
-        </li><!-- End Dashboard Nav -->
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="btn btn-warning w-100 mt-2">
+                        Register
+                    </a>
+                @endif
+            @endauth
+        @endif
     </ul>
-    <ul class="sidebar-nav">
-        <li class="nav-item">
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button class="dropdown-item d-flex align-items-center" type="submit">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Sign Out</span>
-                </button>
-            </form>
-
-        </li>
-
-    </ul>
+    </a>
+    </div><!-- End Logo -->
 </aside>

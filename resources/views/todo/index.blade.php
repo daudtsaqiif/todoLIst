@@ -5,7 +5,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">To Do List</h5>
+            <h5 class="card-title">To Do List {{ Auth::user()->name }}</h5>
 
 
             {{-- button modal create To Do List --}}
@@ -82,11 +82,11 @@
     </div>
 
     @forelse ($todo as $row)
-    <div class="flex">
+    <div class="">
         <div class="col-lg-2">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title"><span>{{ $loop->iteration }}</span>.{{ $row->title }}</h5>
+                    <h5 class="card-title"><span class="fw-bold text-primary-emphasis">{{ $loop->iteration }}</span>.{{ $row->title }}</h5>
                     <p class="card-text">{{ $row->description }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -131,9 +131,7 @@
                 </div>
             </div>
         </div>
-        
     </div>
-       
     @empty
         <div>
             <p class="text-center"> Data is Empty</p>
