@@ -45,6 +45,7 @@
     <!-- ======= Header ======= -->
     @include('layouts.include.navbar')
     <!-- End Header -->
+    @include('layouts.include.sidebar')
 
     <!-- ======= Sidebar ======= -->
     <!-- End Sidebar-->
