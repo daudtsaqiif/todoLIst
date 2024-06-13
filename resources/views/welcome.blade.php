@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Welcome To, DaDo List, List do you want to do</h5>
+            <h5 class="card-title fs-2">Welcome To, DaDo List, List do you want to do</h5>
         </div>
     </div>
 
